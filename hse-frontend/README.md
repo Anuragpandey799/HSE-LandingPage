@@ -1,16 +1,87 @@
-# React + Vite
+# 🌍 HSE Global Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, modern landing page for a Health, Safety & Environment (HSE) qualification framework.  
+Built with a clean SaaS-style UI and structured progression roadmap from Level 1 to Level 7.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Preview
 
-## React Compiler
+<!-- 🔗 https://your-live-link-here.com   -->
+👨‍💻 Portfolio: https://anurag-pandey.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📌 About The Project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This landing page presents a structured academic and professional progression pathway in Health, Safety & Environment (HSE).  
+
+It includes:
+
+- Ofqual Level 1–7 Qualification Roadmap
+- IOSH / OSHA / OTHM Certifications
+- Career & Academic Progression Visualization
+- Digital HSE Consultants Section
+- Testimonials & Social Proof
+- High-Converting Call-To-Action
+- Professional Company Footer
+
+The design follows modern SaaS landing page principles focused on:
+
+- Clean typography
+- Strong hierarchy
+- Smooth animations
+- Conversion-driven layout
+- Fully responsive structure
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- React (Vite)
+- Tailwind CSS
+- Framer Motion
+- React Icons
+
+**Deployment:**
+- Vercel
+
+
+
+## ✨ Features
+
+✔ Premium SaaS-style UI  
+✔ Scroll animations (Framer Motion)  
+✔ Fully responsive (Mobile / Tablet / Desktop)  
+✔ Clean component-based architecture  
+✔ Modular & scalable structure  
+✔ Modern gradient CTA section  
+✔ Professional footer with accreditation section  
+✔ Developer credit integration  
+
+---
+
+## 🎯 Design Philosophy
+
+This project was built with:
+
+- Conversion-focused layout strategy  
+- Clear information hierarchy  
+- Modern spacing system  
+- Consistent color palette  
+- Professional typography balance  
+- Enterprise-level landing page structure  
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+npm run dev
+```
