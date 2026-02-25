@@ -37,7 +37,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <img src="/images/Logo.png" alt="" className="w-40 h-14" />
+        <img src="/images/1A HK INTERNATIONAL LOGO.png" alt="" className="w-40 h-16" />
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 items-center font-medium">
