@@ -53,10 +53,10 @@ const CareerPath = () => {
               Educational Pathway
             </h3>
 
-            <ul className="space-y-6 border-l-4 border-green-500 pl-6">
+            <ul className="space-y-6 border-l-4 border-orange-500 pl-6">
               {educationPath.map((item, index) => (
                 <li key={index} className="relative">
-                  <span className="absolute -left-3 top-2 w-3 h-3 bg-green-500 rounded-full"></span>
+                  <span className="absolute -left-3 top-2 w-3 h-3 bg-orange-500 rounded-full"></span>
                   <p className="text-gray-700">{item}</p>
                 </li>
               ))}

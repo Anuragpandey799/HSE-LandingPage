@@ -59,7 +59,7 @@ const Testimonials = () => {
               className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100"
             >
               {/* Avatar */}
-              <div className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-xl font-bold mx-auto">
+              <div className="w-16 h-16 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl font-bold mx-auto">
                 {item.name.charAt(0)}
               </div>
 
@@ -67,7 +67,7 @@ const Testimonials = () => {
                 {item.name}
               </h3>
 
-              <p className="text-green-600 text-sm font-medium mt-1">
+              <p className="text-orange-600 text-sm font-medium mt-1">
                 {item.role}
               </p>
 

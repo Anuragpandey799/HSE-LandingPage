@@ -79,7 +79,7 @@ const QualificationRoadmap = () => {
                   className={`w-6 h-6 rounded-full z-10 ${
                     item.highlight
                       ? "bg-yellow-400"
-                      : "bg-green-500"
+                      : "bg-orange-500"
                   }`}
                 ></div>
 

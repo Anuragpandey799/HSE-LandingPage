@@ -26,7 +26,7 @@ const Pillars = () => {
   return (
     <section
       id="pillars"
-      className="py-24 bg-gray-50 px-6"
+      className="py-24 bg-gray-200 px-6"
     >
       <div className="max-w-7xl mx-auto text-center">
 
@@ -56,7 +56,7 @@ const Pillars = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 hover:-translate-y-2"
             >
-              <div className="text-green-600 mb-6">
+              <div className="text-orange-600 mb-6">
                 {pillar.icon}
               </div>
 

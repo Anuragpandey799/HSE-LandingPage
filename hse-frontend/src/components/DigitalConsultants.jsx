@@ -32,7 +32,7 @@ const DigitalConsultants = () => {
   return (
     <section
       id="digital"
-      className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-6"
+      className="py-24 bg-gray-800 text-white px-6"
     >
       <div className="max-w-7xl mx-auto text-center">
 
@@ -61,9 +61,9 @@ const DigitalConsultants = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-green-400 hover:shadow-xl transition duration-300"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-orange-400 hover:shadow-xl transition duration-300"
             >
-              <div className="text-green-400 mb-4">
+              <div className="text-orange-400 mb-4">
                 {item.icon}
               </div>
 

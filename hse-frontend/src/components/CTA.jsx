@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <section
       id="cta"
-      className="py-24 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-6"
+      className="py-24 bg-linear-to-r from-purple-600  via to-orange-600 text-white px-6"
     >
       <div className="max-w-4xl mx-auto text-center">
 
@@ -31,11 +31,11 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-10 flex flex-col sm:flex-row justify-center gap-6"
         >
-          <button className="bg-white text-green-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 shadow-md">
+          <button className="bg-white text-orange-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 shadow-md">
             Apply Now
           </button>
 
-          <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition duration-300">
+          <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition duration-300">
             Book Free Consultation
           </button>
         </motion.div>

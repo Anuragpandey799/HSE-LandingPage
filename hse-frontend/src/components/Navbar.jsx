@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-scroll"
-import { HiOutlineMenu, HiOutlineX } from "react-icons/hi"
+import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", to: "hero" },
@@ -25,20 +25,19 @@ const Navbar = () => {
     { name: "Levels", to: "roadmap" },
     { name: "Certifications", to: "certifications" },
     { name: "Contact", to: "cta" },
-  ]
+  ];
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-600 h-20 ${
         scrolled
-          ? "bg-white shadow-md py-3"
-          : "bg-transparent py-5"
+          ? "bg-linear-to-r from-white via-purple-500 to-orange-950 shadow-lg shadow-orange-700  py-3"
+          : "bg-linear-to-r from-white via-purple-500 to-orange-950 border border-b-white py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
         {/* Logo */}
-         <img src="/images/1A HK INTERNATIONAL LOGO.jpeg" alt="" className="w-25"/>
+        <img src="/images/Logo.png" alt="" className="w-40 h-14" />
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 items-center font-medium">
@@ -48,15 +47,17 @@ const Navbar = () => {
                 to={link.to}
                 smooth={true}
                 duration={500}
-                className="cursor-pointer hover:text-green-600 transition"
+                className="cursor-pointer hover:text-orange-600 transition"
               >
                 {link.name}
               </Link>
             </li>
           ))}
-          <button className="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition">
-            Apply Now
-          </button>
+          <a href="https://wa.me/7991845638" target="_blank">
+            <button className="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 transition">
+              Apply Now
+            </button>
+          </a>
         </ul>
 
         {/* Mobile Icon */}
@@ -79,20 +80,20 @@ const Navbar = () => {
                   smooth={true}
                   duration={500}
                   onClick={() => setIsOpen(false)}
-                  className="cursor-pointer hover:text-green-600 transition"
+                  className="cursor-pointer hover:text-orange-600 transition"
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
-            <button className="bg-green-600 text-white px-5 py-2 rounded-lg">
+            <button className="bg-orange-600 text-white px-5 py-2 rounded-lg">
               Apply Now
             </button>
           </ul>
         </div>
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
