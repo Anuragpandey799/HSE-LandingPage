@@ -70,7 +70,7 @@ const Certifications = () => {
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-2 rounded-full font-medium transition ${
                 activeTab === tab
-                  ? "bg-orange-600 text-white"
+                  ? "bg-linear-to-r from-indigo-600 to-orange-600 text-white"
                   : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-200"
               }`}
             >

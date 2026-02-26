@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <section
       id="cta"
-      className="py-24 bg-linear-to-r from-purple-600  via to-orange-600 text-white px-6"
+      className="py-24 bg-linear-to-r from-indigo-800  via to-orange-600 text-white px-6"
     >
       <div className="max-w-4xl mx-auto text-center">
 

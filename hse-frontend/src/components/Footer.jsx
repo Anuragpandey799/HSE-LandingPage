@@ -10,7 +10,7 @@ const Footer = () => {
 
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-red-600">
               1A HK International
             </h3>
             <p className="mt-4 text-gray-400">
