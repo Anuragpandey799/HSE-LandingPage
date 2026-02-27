@@ -1,8 +1,10 @@
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Certifications = () => {
-  const [activeTab, setActiveTab] = useState("iosh")
+  const [activeTab, setActiveTab] = useState("iosh");
+  const navigate = useNavigate();
 
   const tabContent = {
     iosh: {
@@ -38,15 +40,18 @@ const Certifications = () => {
         "Direct MSc dissertation route",
       ],
     },
-  }
+  };
+
+  const handleCardClick = () => {
+    if (activeTab === "iosh") {
+      navigate("/iosh-level-3");
+      window.scrollTo(0, 0); // ensures page loads from top
+    }
+  };
 
   return (
-    <section
-      id="certifications"
-      className="py-24 bg-gray-100 px-6"
-    >
+    <section id="certifications" className="py-24 bg-gray-100 px-6">
       <div className="max-w-7xl mx-auto text-center">
-
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -70,7 +75,7 @@ const Certifications = () => {
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-2 rounded-full font-medium transition ${
                 activeTab === tab
-                  ? "bg-linear-to-r from-indigo-600 to-orange-600 text-white"
+                  ? "bg-gradient-to-r from-indigo-600 to-orange-600 text-white"
                   : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -79,13 +84,18 @@ const Certifications = () => {
           ))}
         </div>
 
-        {/* Content */}
+        {/* Content Card */}
         <motion.div
           key={activeTab}
+          onClick={handleCardClick}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="mt-12 bg-white p-10 rounded-2xl shadow-lg max-w-4xl mx-auto"
+          className={`mt-12 bg-white p-10 rounded-2xl shadow-lg max-w-4xl mx-auto transition duration-300 ${
+            activeTab === "iosh"
+              ? "cursor-pointer hover:shadow-2xl hover:-translate-y-2"
+              : ""
+          }`}
         >
           <h3 className="text-2xl font-bold text-slate-900">
             {tabContent[activeTab].title}
@@ -95,16 +105,21 @@ const Certifications = () => {
             {tabContent[activeTab].description}
           </p>
 
-          <ul className="mt-6 space-y-3 text-gray-700">
+          <ul className="mt-6 space-y-3 text-gray-700 text-left max-w-md mx-auto">
             {tabContent[activeTab].points.map((point, index) => (
               <li key={index}>✔ {point}</li>
             ))}
           </ul>
-        </motion.div>
 
+          {activeTab === "iosh" && (
+            <p className="mt-6 text-sm text-orange-600 font-medium">
+             View full IOSH Level 3 details →
+            </p>
+          )}
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Certifications
+export default Certifications;

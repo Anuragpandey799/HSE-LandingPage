@@ -42,10 +42,10 @@ const Navbar = () => {
         className={`fixed w-full z-50 transition-all duration-500 ${
           scrolled
             ? "backdrop-blur-lg bg-white/50 shadow-md py-3 shadow-amber-200"
-            : "bg-transparent py-5"
+            : "bg-linear-to-b from-white/100 to-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center ">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
