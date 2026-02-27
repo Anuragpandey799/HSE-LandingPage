@@ -60,15 +60,15 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <button className="border relative px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-orange-500 hover:from-indigo-600 to-red-600 shadow-xl overflow-hidden">
-                  <span className="relative z-10">Start Your Journey</span>
+                <button className="border relative px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-orange-500 hover:from-indigo-600 to-red-600 shadow-xl overflow-hidden hover:rounded-4xl">
+                  <span className="relative z-10">Enrol Now</span>
                 </button>
               </motion.a>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border border-white/40 backdrop-blur-lg px-8 py-3 rounded-xl hover:bg-white hover:text-slate-900 transition"
+                className="border border-white/40 backdrop-blur-lg px-8 py-3 rounded-xl hover:bg-white hover:text-slate-900 transition hover:rounded-4xl"
               >
                 Download Brochure
               </motion.button>

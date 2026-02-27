@@ -31,11 +31,11 @@ const CTA = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-10 flex flex-col sm:flex-row justify-center gap-6"
         >
-          <button className="bg-white text-orange-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 shadow-md">
+          <button className="bg-white text-orange-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 shadow-md hover:rounded-4xl">
             Apply Now
           </button>
 
-          <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition duration-300">
+          <button className="border border-orange-400 px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition duration-300 hover:rounded-4xl">
             Book Free Consultation
           </button>
         </motion.div>
