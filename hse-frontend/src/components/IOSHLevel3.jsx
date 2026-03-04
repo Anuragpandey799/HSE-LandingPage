@@ -1,211 +1,221 @@
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef, useState } from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0 }
+import {
+  FiTarget,
+  FiGlobe,
+  FiStar,
+  FiAward,
+  FiShield,
+  FiTrendingUp,
+  FiUsers,
+  FiBriefcase,
+  FiBarChart2
+} from "react-icons/fi"
+
+import {
+  MdOutlineGavel,
+  MdOutlinePsychology
+} from "react-icons/md"
+
+import { FaUserShield, FaBuilding } from "react-icons/fa"
+
+const Counter = ({ target, suffix = "" }) => {
+  const [count, setCount] = useState(0)
+  const hasRun = useRef(false)
+
+  return (
+    <motion.div
+      onViewportEnter={() => {
+        if (hasRun.current) return
+        hasRun.current = true
+        let start = 0
+        const duration = 1800
+        const step = 16
+        const increment = target / (duration / step)
+
+        const timer = setInterval(() => {
+          start += increment
+          if (start >= target) {
+            setCount(target)
+            clearInterval(timer)
+          } else {
+            setCount(Math.floor(start))
+          }
+        }, step)
+      }}
+    >
+      <span>{count.toLocaleString()}{suffix}</span>
+    </motion.div>
+  )
 }
 
 const IOSHLevel3 = () => {
+  const heroRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  })
+
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
   return (
-    <>
+    <div className="font-sans">
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative bg-gradient-to-br from-indigo-900 via-slate-900 to-black text-white py-32 px-6 overflow-hidden">
-
-        {/* Background Glow */}
-        <div className="absolute w-[500px] h-[500px] bg-indigo-600/30 blur-[140px] rounded-full -top-32 -left-32 animate-pulse"></div>
-
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold leading-tight"
-          >
-            IOSH Level 3 Certificate in{" "}
-            <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-              Occupational Safety & Health
-            </span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            transition={{ delay: 0.2 }}
-            className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto"
-          >
-            Build competence. Gain recognition. Lead safety globally.
-          </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            transition={{ delay: 0.4 }}
-            className="mt-12 flex flex-wrap justify-center gap-6"
-          >
-            <motion.button
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-orange-500 hover:from-indigo-800 hover:rounded-4xl to-red-600 px-8 py-3 rounded-xl font-semibold shadow-xl transition-all"
-            >
-              Enrol Now
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="border border-white px-8 py-3 rounded-xl hover:bg-white hover:text-slate-900 transition-all hover:rounded-4xl"
-            >
-              Download Brochure
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="border border-orange-400 text-orange-400 px-8 py-3 rounded-xl hover:bg-orange-500 hover:text-white transition-all hover:rounded-4xl"
-            >
-              Speak to Advisor
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* WHY IT MATTERS */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-4xl font-bold text-center text-slate-900"
-          >
-            Why IOSH Level 3 Matters
-          </motion.h2>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-8">
-            {[
-              "Risk-Based Safety Systems",
-              "Safety Culture Influence",
-              "Incident Investigation Leadership",
-              "Regulatory Compliance Support",
-              "Performance Improvement",
-              "Leadership Progression Bridge",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -10 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-xl border hover:shadow-2xl transition-all border-orange-100"
-              >
-                <div className="text-orange-500 text-2xl mb-4">✔</div>
-                <h3 className="font-semibold text-lg text-slate-900">
-                  {item}
-                </h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* COURSE STRUCTURE */}
-      <section className="py-28 bg-gray-50 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-slate-900">
-            Course Structure
-          </h2>
-
-          <div className="mt-16 space-y-8">
-            {[
-              "Principles of OSH",
-              "Risk Management",
-              "Incident Investigation",
-              "Legal Framework",
-              "Leadership & Culture"
-            ].map((title, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
-              >
-                <h3 className="text-xl font-semibold text-slate-900">
-                  Module {index + 1} – {title}
-                </h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CAREER PATHWAY TIMELINE */}
-      <section className="py-28 bg-white px-6 text-center">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900">
-            Career & Academic Progression
-          </h2>
-
-          <motion.div
-            className="mt-16 flex flex-wrap justify-center gap-6"
-          >
-            {[
-              "Safety Officer",
-              "HSE Manager",
-              "Compliance Manager",
-              "Risk Consultant",
-              "ESG Professional",
-              "Corporate Safety Advisor",
-            ].map((role, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.08 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-4 rounded-xl shadow-lg"
-              >
-                {role}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="py-28 bg-gradient-to-r from-indigo-900 to-black text-white text-center px-6 relative overflow-hidden">
-        <div className="absolute w-[400px] h-[400px] bg-orange-500/30 blur-[120px] rounded-full -bottom-20 -right-20"></div>
-
-        <h2 className="text-4xl font-bold relative z-10">
-          Elevate Your Safety Career Today
-        </h2>
-
+      {/* ================= HERO ================= */}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center bg-[#050816] text-white overflow-hidden"
+      >
         <motion.div
-          className="mt-12 flex flex-wrap justify-center gap-6 relative z-10"
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="absolute inset-0 z-0"
         >
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            className="bg-linear-to-r from-orange-600 to-red-600 hover:from-indigo-700 px-8 py-2 rounded-xl font-semibold shadow-xl hover:rounded-4xl"
-          >
-            Enrol Now
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="border border-white px-10 py-4 rounded-xl hover:bg-white hover:text-slate-900 transition-all hover:rounded-4xl"
-          >
-            Download Brochure
-          </motion.button>
+          <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-indigo-700/20 blur-[160px] rounded-full -translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-600/20 blur-[130px] rounded-full translate-x-1/4 translate-y-1/4" />
         </motion.div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center w-full">
+          
+          {/* LEFT */}
+          <div>
+            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium px-4 py-2 rounded-full mb-8">
+              <FiAward /> IOSH Globally Recognised Certificate
+            </div>
+
+            <h1 className="text-6xl font-black leading-tight">
+              IOSH Level 3 <br />
+              <span className="bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text text-transparent">
+                Certificate
+              </span>
+            </h1>
+
+            <p className="mt-6 text-gray-400 text-lg max-w-xl">
+              Occupational Safety & Health — Build real competence, gain global recognition, and lead safety at every level.
+            </p>
+
+            <div className="mt-10 flex gap-4 flex-wrap">
+              <motion.button
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-xl font-bold shadow-lg flex items-center gap-2"
+              >
+                Enrol Now <FiTrendingUp />
+              </motion.button>
+
+              <button className="border border-white/20 bg-white/5 px-8 py-4 rounded-xl hover:bg-white/10 transition">
+                Download Brochure
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT STATS */}
+          <div className="grid grid-cols-2 gap-6">
+            {[
+              { value: 1000000, suffix: "+", label: "Safety Leaders Goal", icon: <FiTarget /> },
+              { value: 180, suffix: "+", label: "Countries Recognised", icon: <FiGlobe /> },
+              { value: 98, suffix: "%", label: "Learner Satisfaction", icon: <FiStar /> },
+              { value: 15, suffix: "+", label: "Years of Excellence", icon: <FiAward /> },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -6 }}
+                className="bg-white/[0.05] border border-white/10 rounded-2xl p-6 backdrop-blur"
+              >
+                <div className="text-3xl text-orange-400 mb-3">{stat.icon}</div>
+                <div className="text-3xl font-black text-white">
+                  <Counter target={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="text-gray-400 text-sm mt-2">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WHY IT MATTERS ================= */}
+      <section className="py-28 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-5xl font-black text-slate-900">
+            Why IOSH Level 3 Matters
+          </h2>
+        </div>
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {[
+            { icon: <FiShield />, title: "Risk-Based Safety Systems" },
+            { icon: <FiUsers />, title: "Safety Culture Influence" },
+            { icon: <MdOutlinePsychology />, title: "Incident Investigation" },
+            { icon: <MdOutlineGavel />, title: "Regulatory Compliance" },
+            { icon: <FiBarChart2 />, title: "Performance Improvement" },
+            { icon: <FiTrendingUp />, title: "Leadership Progression" },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-2xl p-8 shadow-md border"
+            >
+              <div className="w-14 h-14 bg-orange-100 text-orange-600 flex items-center justify-center rounded-xl text-2xl mb-6">
+                {item.icon}
+              </div>
+              <h3 className="font-bold text-lg">{item.title}</h3>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= CAREER PATHWAY ================= */}
+      <section className="py-28 px-6 bg-white">
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <h2 className="text-5xl font-black text-slate-900">
+            Career Progression
+          </h2>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          {[
+            { role: "Safety Officer", icon: <FaUserShield /> },
+            { role: "HSE Manager", icon: <FiBriefcase /> },
+            { role: "Compliance Manager", icon: <MdOutlineGavel /> },
+            { role: "Risk Consultant", icon: <FiTrendingUp /> },
+            { role: "ESG Professional", icon: <FiUsers /> },
+            { role: "Corporate Advisor", icon: <FaBuilding /> },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.08 }}
+              className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white px-8 py-6 rounded-2xl shadow-lg"
+            >
+              <div className="text-3xl mb-3">{item.icon}</div>
+              <div className="font-semibold">{item.role}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= FINAL CTA ================= */}
+      <section className="py-32 bg-[#050816] text-white text-center px-6">
+        <h2 className="text-6xl font-black">
+          Elevate Your Safety Career
+        </h2>
+        <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
+          Join thousands of professionals transforming safety leadership worldwide.
+        </p>
+
+        <motion.button
+          whileHover={{ scale: 1.08 }}
+          className="mt-10 bg-gradient-to-r from-orange-500 to-red-600 px-12 py-5 rounded-xl font-bold text-lg shadow-xl"
+        >
+          Enrol Now
+        </motion.button>
       </section>
 
       <Footer />
-    </>
+    </div>
   )
 }
 

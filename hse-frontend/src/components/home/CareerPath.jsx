@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
 
 const educationPath = [
-  "Level 1–2: Foundation Knowledge",
+  "Level 1-2: Foundation Knowledge",
   "Level 3: Safety Officer Certification",
-  "Level 4–5: Diploma & Management Progression",
-  "Level 6: Bachelor’s Equivalent",
+  "Level 4-5: Diploma & Management Progression",
+  "Level 6: Bachelor's Equivalent",
   "Level 7: Postgraduate Diploma / MSc Route",
 ]
 
