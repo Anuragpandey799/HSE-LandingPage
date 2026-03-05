@@ -1,7 +1,8 @@
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import {
   FiTarget,
@@ -12,55 +13,60 @@ import {
   FiTrendingUp,
   FiUsers,
   FiBriefcase,
-  FiBarChart2
-} from "react-icons/fi"
+  FiBarChart2,
+} from "react-icons/fi";
 
-import {
-  MdOutlineGavel,
-  MdOutlinePsychology
-} from "react-icons/md"
+import { MdOutlineGavel, MdOutlinePsychology } from "react-icons/md";
 
-import { FaUserShield, FaBuilding } from "react-icons/fa"
+import { FaUserShield, FaBuilding } from "react-icons/fa";
 
 const Counter = ({ target, suffix = "" }) => {
-  const [count, setCount] = useState(0)
-  const hasRun = useRef(false)
+  const [count, setCount] = useState(0);
+  const hasRun = useRef(false);
 
   return (
     <motion.div
       onViewportEnter={() => {
-        if (hasRun.current) return
-        hasRun.current = true
-        let start = 0
-        const duration = 1800
-        const step = 16
-        const increment = target / (duration / step)
+        if (hasRun.current) return;
+        hasRun.current = true;
+        let start = 0;
+        const duration = 1800;
+        const step = 16;
+        const increment = target / (duration / step);
 
         const timer = setInterval(() => {
-          start += increment
+          start += increment;
           if (start >= target) {
-            setCount(target)
-            clearInterval(timer)
+            setCount(target);
+            clearInterval(timer);
           } else {
-            setCount(Math.floor(start))
+            setCount(Math.floor(start));
           }
-        }, step)
+        }, step);
       }}
     >
-      <span>{count.toLocaleString()}{suffix}</span>
+      <span>
+        {count.toLocaleString()}
+        {suffix}
+      </span>
     </motion.div>
-  )
-}
+  );
+};
 
 const IOSHLevel3 = () => {
-  const heroRef = useRef(null)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"]
-  })
+    offset: ["start start", "end start"],
+  });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div className="font-sans">
@@ -80,7 +86,6 @@ const IOSHLevel3 = () => {
         </motion.div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center w-full">
-          
           {/* LEFT */}
           <div>
             <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium px-4 py-2 rounded-full mb-8">
@@ -95,31 +100,55 @@ const IOSHLevel3 = () => {
             </h1>
 
             <p className="mt-6 text-gray-400 text-lg max-w-xl">
-              Occupational Safety & Health — Build real competence, gain global recognition, and lead safety at every level.
+              Occupational Safety & Health — Build real competence, gain global
+              recognition, and lead safety at every level.
             </p>
 
             <div className="mt-10 flex gap-4 flex-wrap">
               <motion.button
+                onClick={() => {
+                  navigate("/contact");
+                }}
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-xl font-bold shadow-lg flex items-center gap-2"
+                className="cursor-pointer bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-xl font-bold shadow-lg flex items-center gap-2"
               >
-                Enrol Now <FiTrendingUp />
+                Start Free Trial <FiTrendingUp />
               </motion.button>
 
-              <button className="border border-white/20 bg-white/5 px-8 py-4 rounded-xl hover:bg-white/10 transition">
+              {/* <button className="border border-white/20 bg-white/5 px-8 py-4 rounded-xl hover:bg-white/10 transition">
                 Download Brochure
-              </button>
+              </button> */}
             </div>
           </div>
 
           {/* RIGHT STATS */}
           <div className="grid grid-cols-2 gap-6">
             {[
-              { value: 1000000, suffix: "+", label: "Safety Leaders Goal", icon: <FiTarget /> },
-              { value: 180, suffix: "+", label: "Countries Recognised", icon: <FiGlobe /> },
-              { value: 98, suffix: "%", label: "Learner Satisfaction", icon: <FiStar /> },
-              { value: 15, suffix: "+", label: "Years of Excellence", icon: <FiAward /> },
+              {
+                value: 1000000,
+                suffix: "+",
+                label: "Safety Leaders Goal",
+                icon: <FiTarget />,
+              },
+              {
+                value: 180,
+                suffix: "+",
+                label: "Countries Recognised",
+                icon: <FiGlobe />,
+              },
+              {
+                value: 98,
+                suffix: "%",
+                label: "Learner Satisfaction",
+                icon: <FiStar />,
+              },
+              {
+                value: 15,
+                suffix: "+",
+                label: "Years of Excellence",
+                icon: <FiAward />,
+              },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -199,24 +228,24 @@ const IOSHLevel3 = () => {
 
       {/* ================= FINAL CTA ================= */}
       <section className="py-32 bg-[#050816] text-white text-center px-6">
-        <h2 className="text-6xl font-black">
-          Elevate Your Safety Career
-        </h2>
+        <h2 className="text-6xl font-black">Elevate Your Safety Career</h2>
         <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
-          Join thousands of professionals transforming safety leadership worldwide.
+          Join thousands of professionals transforming safety leadership
+          worldwide.
         </p>
 
         <motion.button
+        onClick={()=>{navigate("/contact")}}
           whileHover={{ scale: 1.08 }}
-          className="mt-10 bg-gradient-to-r from-orange-500 to-red-600 px-12 py-5 rounded-xl font-bold text-lg shadow-xl"
+          className="cursor-pointer mt-10 bg-gradient-to-r from-orange-500 to-red-600 px-12 py-5 rounded-xl font-bold text-lg shadow-xl"
         >
-          Enrol Now
+          Schedule a Call
         </motion.button>
       </section>
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default IOSHLevel3
+export default IOSHLevel3;
