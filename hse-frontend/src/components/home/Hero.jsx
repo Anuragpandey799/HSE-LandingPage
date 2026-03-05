@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const container = {
     hidden: {},
     show: {
@@ -54,24 +58,21 @@ const Hero = () => {
               variants={item}
               className="mt-10 flex flex-col sm:flex-row gap-5"
             >
-              <motion.a
-                href="https://api.whatsapp.com/send/?phone=9619954655"
-                target="_blank"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <button className="border relative px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-orange-500 hover:from-indigo-600 to-red-600 shadow-xl overflow-hidden hover:rounded-4xl">
-                  <span className="relative z-10">Enrol Now</span>
+              
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="border relative px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-orange-500 hover:from-indigo-600 to-red-600 shadow-xl overflow-hidden hover:rounded-4xl"
+                >
+                  <span className="relative z-10">Start Free Trial</span>
                 </button>
-              </motion.a>
 
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border border-white/40 backdrop-blur-lg px-8 py-3 rounded-xl hover:bg-white hover:text-slate-900 transition hover:rounded-4xl"
               >
                 Download Brochure
-              </motion.button>
+              </motion.button> */}
             </motion.div>
 
             {/* Trust Badges */}
@@ -123,8 +124,7 @@ const Hero = () => {
               </ul>
 
               <motion.a
-                href="https://api.whatsapp.com/send/?phone=9619954655"
-                target="_blank"
+                href="mailto:info@hkinternational.uk"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.95 }}
               >

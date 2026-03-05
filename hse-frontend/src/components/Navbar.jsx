@@ -99,6 +99,17 @@ const Navbar = () => {
               </li>
             ))}
 
+            {/* IOSH Level-3 Route */}
+            <li className="relative group">
+              <button
+                onClick={() => navigate("/iosh-level-3")}
+                className="cursor-pointer text-gray-800 hover:text-orange-600 transition"
+              >
+                IOSH L-3
+              </button>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-indigo-600 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+
             {/* Contact Route */}
             <li className="relative group">
               <button
