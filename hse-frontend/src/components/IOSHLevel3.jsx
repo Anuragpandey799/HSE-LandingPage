@@ -54,10 +54,8 @@ const Counter = ({ target, suffix = "" }) => {
 };
 
 const IOSHLevel3 = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -91,8 +89,9 @@ const IOSHLevel3 = () => {
             <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium px-4 py-2 rounded-full mb-8">
               <FiAward /> IOSH Globally Recognised Certificate
             </div>
+            <div></div>
 
-            <h1 className="text-6xl font-black leading-tight">
+            <h1 className="text-xl font-black leading-tight">
               IOSH Level 3 <br />
               <span className="bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text text-transparent">
                 Certificate
@@ -166,6 +165,76 @@ const IOSHLevel3 = () => {
         </div>
       </section>
 
+      {/* ================= IOSH CREDIBILITY ================= */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT LOGO */}
+          <div className="relative">
+            <div className="absolute -inset-6 bg-orange-500/20 blur-2xl rounded-full"></div>
+
+            <motion.img
+              src="/images/iosh_logo.jpg"
+              alt="IOSH Certification Logo"
+              className="relative rounded-2xl shadow-2xl"
+            />
+          </div>
+
+          {/* RIGHT CONTENT */}
+          <div>
+            <h2 className="text-4xl font-black text-slate-900 mb-8">
+              Globally Recognised IOSH Qualification
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-4 text-gray-700">
+              <div className="flex gap-3 items-start">
+                <FiAward className="text-orange-500 mt-1" />
+                <p>Ofqual Regulated Qualification (UK)</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiGlobe className="text-orange-500 mt-1" />
+                <p>Recognised by employers worldwide</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <MdOutlineGavel className="text-orange-500 mt-1" />
+                <p>Quality assured by the UK government regulator</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiStar className="text-orange-500 mt-1" />
+                <p>Enhances professional credibility</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiTrendingUp className="text-orange-500 mt-1" />
+                <p>Supports career progression in health and safety</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiShield className="text-orange-500 mt-1" />
+                <p>Trusted international qualification standard</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiAward className="text-orange-500 mt-1" />
+                <p>Most affordable fees</p>
+              </div>
+
+              <div className="flex gap-3 items-start">
+                <FiUsers className="text-orange-500 mt-1" />
+                <p>Classroom / Online / Onsite options available</p>
+              </div>
+
+              <div className="flex gap-3 items-start sm:col-span-2">
+                <FaBuilding className="text-orange-500 mt-1" />
+                <p>Special discounted rates for corporate organisations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= WHY IT MATTERS ================= */}
       <section className="py-28 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center mb-16">
@@ -235,7 +304,9 @@ const IOSHLevel3 = () => {
         </p>
 
         <motion.button
-        onClick={()=>{navigate("/contact")}}
+          onClick={() => {
+            navigate("/contact");
+          }}
           whileHover={{ scale: 1.08 }}
           className="cursor-pointer mt-10 bg-gradient-to-r from-orange-500 to-red-600 px-12 py-5 rounded-xl font-bold text-lg shadow-xl"
         >

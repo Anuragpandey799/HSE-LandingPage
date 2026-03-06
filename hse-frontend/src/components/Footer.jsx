@@ -53,7 +53,7 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li><a href="mailto:info@hkinternational.uk">Email: info@hkinternational.uk</a></li>
-              <li><a href="tel:+919619954655">Phone: +91 9619954655</a></li>
+              {/* <li><a href="tel:+919619954655">Phone: +91 9619954655</a></li> */}
               <li>Global Training & Consultancy</li>
             </ul>
           </div>
